@@ -1,5 +1,8 @@
 // cypress/support/commands.js
 
+import 'cypress-file-upload';
+
+
 Cypress.Commands.add('openLoginPage', () => {
     cy.visit('https://sirepojti.gbrncode.com/');
     cy.get('a.login-link').click(); // Menggunakan selector untuk class tombol 'Sign In'
