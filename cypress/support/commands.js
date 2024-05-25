@@ -10,8 +10,12 @@ Cypress.Commands.add('openLoginPage', () => {
     if (isAdmin) {
       cy.get('.text-decoration-none.fw-light.text-center.link-text').click(); // Selector untuk tombol "Sign In as Admin"
     }
-    cy.get('input[name="username"]').type(username);
-    cy.get('input[name="password"]').type(password);
+    if (username) {
+      cy.get('input[name="username"]').type(username);
+    }
+    if (password) {
+      cy.get('input[name="password"]').type(password);
+    }
     cy.get('button[type="submit"]').click();
   });
   
