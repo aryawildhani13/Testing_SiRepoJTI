@@ -1,33 +1,23 @@
-
+// cypress/e2e/login.cy.js
 
 describe('Login Tests for SIREPOJTI', () => {
-  beforeEach(() => {
-    cy.visit('https://sirepojti.gbrncode.com/');
+  
+  const userCredentials = {
+    username: 'farhan12',
+    password: 'userpass'
+  };
+  
+  const adminCredentials = {
+    username: 'adminsirepojti',
+    password: 'adminpass'
+  };
+  
+  it('Should login as a user', () => {
+    cy.login(userCredentials.username, userCredentials.password);
   });
-
-  it('Login as a user', () => {
-    cy.fixture('users').then((users) => {
-      const user = users.user;
-      cy.get('input[name="username"]').type(user.username);
-      cy.get('input[name="password"]').type(user.password);
-      cy.get('button[type="submit"]').click();
-
-      // Verifikasi berhasil login
-      cy.url().should('include', '/dashboard'); // Sesuaikan dengan URL dashboard setelah login
-      cy.contains('Welcome, Farhan'); // Sesuaikan dengan elemen yang muncul setelah login
-    });
+  
+  it('Should login as an admin', () => {
+    cy.login(adminCredentials.username, adminCredentials.password, true);
   });
-
-  it('Login as an admin', () => {
-    cy.fixture('users').then((users) => {
-      const admin = users.admin;
-      cy.get('input[name="username"]').type(admin.username);
-      cy.get('input[name="password"]').type(admin.password);
-      cy.get('button[type="submit"]').click();
-
-      // Verifikasi berhasil login
-      cy.url().should('include', '/admin-dashboard'); // Sesuaikan dengan URL dashboard admin setelah login
-      cy.contains('Welcome, Admin'); // Sesuaikan dengan elemen yang muncul setelah login
-    });
-  });
-});  
+  
+});

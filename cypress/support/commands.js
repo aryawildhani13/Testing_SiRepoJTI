@@ -1,25 +1,29 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// cypress/support/commands.js
+
+Cypress.Commands.add('openLoginPage', () => {
+    cy.visit('https://sirepojti.gbrncode.com/');
+    cy.get('a.login-link').click(); // Menggunakan selector untuk class tombol 'Sign In'
+  });
+  
+  Cypress.Commands.add('login', (username, password, isAdmin = false) => {
+    cy.openLoginPage();
+    if (isAdmin) {
+      cy.get('.text-decoration-none.fw-light.text-center.link-text').click(); // Selector untuk tombol "Sign In as Admin"
+    }
+    cy.get('input[name="username"]').type(username);
+    cy.get('input[name="password"]').type(password);
+    cy.get('button[type="submit"]').click();
+  });
+  
+  Cypress.Commands.add('logout', () => {
+    cy.get('button.logout').click(); // Sesuaikan dengan selector yang benar untuk tombol logout
+  });
+  
+  Cypress.Commands.add('navigateToProfile', () => {
+    cy.get('a[href="/profile"]').click(); // Sesuaikan dengan selector yang benar untuk navigasi profil
+  });
+  
+  Cypress.Commands.add('navigateToSettings', () => {
+    cy.get('a[href="/settings"]').click(); // Sesuaikan dengan selector yang benar untuk navigasi pengaturan
+  });
+  
