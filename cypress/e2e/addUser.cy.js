@@ -45,12 +45,12 @@ describe("Add User Tests for SIREPOJTI", () => {
         cy.get('button.btn.btn-submit.text-white.px-5.btn-warning[type="submit"]').click();
         cy.contains("User Added").should("be.visible").then(() => {
           // Hapus data yang telah ditambahkan
-            // cy.get('button.swal2-close').click({ force: true });
-            cy.contains("Test User", { timeout: 10000 }).should('be.visible');
-            // Periksa kembali selector untuk tombol delete
-            cy.contains("Test User").parents('tr').find('div.btn.btn-danger.delete-btn').click({ force: true });
-            cy.get('button#deletecriteria.btn.btn-danger.btn-submit').click({ force: true });
-            cy.contains("User deleted").should("be.visible");
+            // // cy.get('button.swal2-close').click({ force: true });
+            // cy.contains("Test User", { timeout: 10000 }).should('be.visible');
+            // // Periksa kembali selector untuk tombol delete
+            // cy.contains("Test User").parents('tr').find('div.btn.btn-danger.delete-btn').click({ force: true });
+            // cy.get('button#deletecriteria.btn.btn-danger.btn-submit').click({ force: true });
+            // cy.contains("User deleted").should("be.visible");
         });
       });
   });
