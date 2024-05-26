@@ -22,17 +22,20 @@ describe("After Search Tests for SIREPOJTI", () => {
     cy.get(".thesis-title.text-decoration-none.mb-1.fw-semibold")
       .first()
       .click();
+      cy.wait(4000); 
   });
 
   it("Cek perilaku sistem jika menekan foto profile pada kanan atas layar", () => {
     cy.get(
       ".nav-link.d-flex.gap-2.pt-3.pt-md-0.align-items-center.justify-content-end.dropdown-toggle"
     ).click();
+    cy.wait(4000); 
   });
 
   it("Menekan tombol hamburger", () => {
     // Klik tombol hamburger untuk membuka menu
     cy.get(".navbar-toggler").click();
+    cy.wait(4000); 
   });
 
   it("Cek perilaku sistem jika menekan checkbox pada salah satu kategori pada filtering", () => {
@@ -40,6 +43,7 @@ describe("After Search Tests for SIREPOJTI", () => {
     cy.get("input.checkbox.category-input").first().click();
     // Klik tombol Apply Filter
     cy.get("button.btn.btn-submit.btn-apply.px-4.py-2.fw-medium").click();
+    cy.wait(4000); 
   });
 
 it('Cek perilaku sistem jika menekan checkbox pada salah satu program studi pada filtering', () => {
@@ -47,6 +51,7 @@ it('Cek perilaku sistem jika menekan checkbox pada salah satu program studi pada
   cy.get('input[type="checkbox"].checkbox[name="id_program_study[]"]').first().click();
   // Klik tombol Apply Filter dengan kelas yang tepat
   cy.get("button.btn.btn-submit.btn-apply.px-4.py-2.fw-medium").click();
+  cy.wait(4000); 
 });
 
 it('Cek perilaku sistem jika menekan checkbox pada lebih dari satu kategori pada filtering', () => {
@@ -56,6 +61,7 @@ it('Cek perilaku sistem jika menekan checkbox pada lebih dari satu kategori pada
   cy.get('input[type="checkbox"].checkbox.category-input[name="id_category[]"][value="2"]').click();
   // Klik tombol Apply Filter
   cy.get("button.btn.btn-submit.btn-apply.px-4.py-2.fw-medium").click();
+  cy.wait(4000); 
 });
 
 
@@ -67,6 +73,8 @@ it('Cek perilaku sistem jika memasukkan data tahun dengan benar pada Publication
 
   // Klik tombol submit
   cy.get("button.btn.btn-submit.btn-apply.px-4.py-2.fw-medium").click();
+
+  cy.wait(4000); 
 
 });
 
@@ -86,6 +94,8 @@ it('Cek perilaku sistem jika memasukkan data tahun dengan benar pada Publication
     cy.get('input[name="author"]').type('Farhan');
   
     cy.get("button.btn.btn-submit.btn-apply.px-4.py-2.fw-medium").click();
+
+    cy.wait(4000); 
   });
   
 
@@ -101,6 +111,8 @@ it('Cek perilaku sistem jika memasukkan data tahun dengan benar pada Publication
       .contains('Farhan')
       .first()
       .click();
+
+      cy.wait(4000); 
   });
   
   
